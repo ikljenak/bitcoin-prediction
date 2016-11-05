@@ -1,5 +1,15 @@
 var http = require('http');
+var predictionService = require('./predictionService.js');
+
 http.createServer(function (req, res) {
+	console.log(req.url);
+	if(req.method == 'GET') {
+		switch (req.url) {
+			case '/service': 
+				predictionService.function1();
+			break;
+		}
+	}
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
 }).listen(8124, "127.0.0.1");
